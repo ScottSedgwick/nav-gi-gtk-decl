@@ -1,0 +1,77 @@
+name:                libnav
+version:             0.1.0.0
+github:              "ScottSedgwick/libnav"
+license:             BSD3
+author:              "Scott Sedgwick"
+maintainer:          "scott.sedgwick@gmail.com"
+copyright:           "Copyright (c) 2018 Scott Sedgwick"
+
+extra-source-files:
+- README.md
+- ChangeLog.md
+
+# Metadata used when publishing your package
+# synopsis:            Short description of your package
+# category:            Investigative
+
+# To avoid duplicated efforts in documentation and dealing with the
+# complications of embedding Haddock markup inside cabal files, it is
+# common to point users to the README.md file.
+description:         Please see the README on GitHub at <https://github.com/ScottSedgwick/nav#readme>
+
+dependencies:
+- base >= 4.7 && < 5
+
+library:
+  source-dirs: src
+
+executables:
+  nav:
+    main:                Main.hs
+    source-dirs:         
+    - app
+    - lib/gi-gtk-declarative/src 
+    - lib/gi-gtk-declarative-app-simple/src
+    ghc-options:
+    - -Wall
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    - -fno-specialise
+    - -fmax-simplifier-iterations=0
+    - -fsimplifier-phases=0
+    dependencies:
+    - libnav
+    - async
+    - bytestring
+    - gi-gobject
+    - gi-glib
+    - gi-gtk
+    - gi-gdk
+    - haskell-gi
+    - haskell-gi-base
+    - pipes
+    - pipes-extras
+    - text
+    - clay
+    # - gi-gtk-declarative
+    # - gi-gtk-declarative-app-simple
+    - unordered-containers
+    - vector
+    - mtl
+    - pipes-concurrency
+
+tests:
+  nav-test:
+    main:                Spec.hs
+    source-dirs:         test
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - libnav
+    - hspec
+    - HUnit
+    - HUnit-approx
+    - QuickCheck

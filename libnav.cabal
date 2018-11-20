@@ -1,0 +1,116 @@
+-- This file has been generated from package.yaml by hpack version 0.28.2.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: 4270ee3e5f00ece53905e1158b12f6b3f27ce73e528b8f9e3c58caeabb740836
+
+name:           libnav
+version:        0.1.0.0
+description:    Please see the README on GitHub at <https://github.com/ScottSedgwick/nav#readme>
+homepage:       https://github.com/ScottSedgwick/libnav#readme
+bug-reports:    https://github.com/ScottSedgwick/libnav/issues
+author:         Scott Sedgwick
+maintainer:     scott.sedgwick@gmail.com
+copyright:      Copyright (c) 2018 Scott Sedgwick
+license:        BSD3
+license-file:   LICENSE
+build-type:     Simple
+cabal-version:  >= 1.10
+extra-source-files:
+    ChangeLog.md
+    README.md
+
+source-repository head
+  type: git
+  location: https://github.com/ScottSedgwick/libnav
+
+library
+  exposed-modules:
+      Navlib
+      Navlib.Cartesian
+      Navlib.Direction
+      Navlib.GreatCircle
+      Navlib.Horizon
+      Navlib.Parallel
+      Navlib.Plane
+      Navlib.Types
+  other-modules:
+      Paths_libnav
+  hs-source-dirs:
+      src
+  build-depends:
+      base >=4.7 && <5
+  default-language: Haskell2010
+
+executable nav
+  main-is: Main.hs
+  other-modules:
+      NavStyle
+      GI.Gtk.Declarative
+      GI.Gtk.Declarative.Attributes
+      GI.Gtk.Declarative.Attributes.Collected
+      GI.Gtk.Declarative.Attributes.Internal
+      GI.Gtk.Declarative.Attributes.Internal.Conversions
+      GI.Gtk.Declarative.Attributes.Internal.EventHandler
+      GI.Gtk.Declarative.Bin
+      GI.Gtk.Declarative.Container
+      GI.Gtk.Declarative.Container.Box
+      GI.Gtk.Declarative.Container.Class
+      GI.Gtk.Declarative.Container.MenuItem
+      GI.Gtk.Declarative.Container.Patch
+      GI.Gtk.Declarative.EventSource
+      GI.Gtk.Declarative.Markup
+      GI.Gtk.Declarative.Patch
+      GI.Gtk.Declarative.SingleWidget
+      GI.Gtk.Declarative.State
+      GI.Gtk.Declarative.App.Simple
+      Paths_libnav
+  hs-source-dirs:
+      app
+      lib/gi-gtk-declarative/src
+      lib/gi-gtk-declarative-app-simple/src
+  ghc-options: -Wall -threaded -rtsopts -with-rtsopts=-N -fno-specialise -fmax-simplifier-iterations=0 -fsimplifier-phases=0
+  build-depends:
+      async
+    , base >=4.7 && <5
+    , bytestring
+    , clay
+    , gi-gdk
+    , gi-glib
+    , gi-gobject
+    , gi-gtk
+    , haskell-gi
+    , haskell-gi-base
+    , libnav
+    , mtl
+    , pipes
+    , pipes-concurrency
+    , pipes-extras
+    , text
+    , unordered-containers
+    , vector
+  default-language: Haskell2010
+
+test-suite nav-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      CartesianSpec
+      DirectionSpec
+      GreatCircleSpec
+      HorizonSpec
+      ParallelSpec
+      PlaneSpec
+      Utilities
+      Paths_libnav
+  hs-source-dirs:
+      test
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      HUnit
+    , HUnit-approx
+    , QuickCheck
+    , base >=4.7 && <5
+    , hspec
+    , libnav
+  default-language: Haskell2010
